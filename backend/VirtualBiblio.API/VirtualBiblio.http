@@ -1,6 +1,0 @@
-@VirtualBiblio_HostAddress = http://localhost:5084
-
-GET {{VirtualBiblio_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

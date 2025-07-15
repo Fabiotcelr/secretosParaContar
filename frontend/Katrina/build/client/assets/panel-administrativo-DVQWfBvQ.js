@@ -1,0 +1,1 @@
+import{j as i}from"./jsx-runtime-0DLF9kdB.js";function a(){return i.jsxs("div",{className:"container mx-auto p-4",children:[i.jsx("h1",{className:"text-3xl font-bold mb-4",children:"Panel Administrativo"}),i.jsx("p",{children:"Bienvenido a la página de Panel Administrativo."})]})}export{a as default};

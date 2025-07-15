@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\VirtualBiblio.Data\VirtualBiblio.Data.csproj" />
+  </ItemGroup>
+
 </Project>

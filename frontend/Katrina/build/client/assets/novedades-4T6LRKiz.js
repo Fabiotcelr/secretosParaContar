@@ -1,0 +1,1 @@
+import{j as e}from"./jsx-runtime-0DLF9kdB.js";function s(){return e.jsxs("div",{className:"container mx-auto p-4",children:[e.jsx("h1",{className:"text-3xl font-bold mb-4",children:"Novedades"}),e.jsx("p",{children:"Bienvenido a la página de Novedades."})]})}export{s as default};

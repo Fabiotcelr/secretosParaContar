@@ -1,0 +1,23 @@
+meta {
+  name: CrearAutor
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:5084/api/authors
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "firstName": "Anthony",
+    "lastName": "Browen",
+    "gender": "Masculino",
+    "birthYear": 1946,
+    "nationality": "Reino Unido",
+    "language": "Inglés",
+    "isAlive": false
+  }
+}

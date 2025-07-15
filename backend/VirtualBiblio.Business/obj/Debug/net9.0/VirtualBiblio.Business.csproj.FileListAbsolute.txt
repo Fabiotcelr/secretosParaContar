@@ -1,0 +1,16 @@
+D:\Documentos\SECRETOSPARACONTAR\backend\VirtualBiblio.Business\bin\Debug\net9.0\VirtualBiblio.Business.deps.json
+D:\Documentos\SECRETOSPARACONTAR\backend\VirtualBiblio.Business\bin\Debug\net9.0\VirtualBiblio.Business.dll
+D:\Documentos\SECRETOSPARACONTAR\backend\VirtualBiblio.Business\bin\Debug\net9.0\VirtualBiblio.Business.pdb
+D:\Documentos\SECRETOSPARACONTAR\backend\VirtualBiblio.Business\bin\Debug\net9.0\VirtualBiblio.Data.dll
+D:\Documentos\SECRETOSPARACONTAR\backend\VirtualBiblio.Business\bin\Debug\net9.0\VirtualBiblio.Data.pdb
+D:\Documentos\SECRETOSPARACONTAR\backend\VirtualBiblio.Business\obj\Debug\net9.0\VirtualBiblio.Business.csproj.AssemblyReference.cache
+D:\Documentos\SECRETOSPARACONTAR\backend\VirtualBiblio.Business\obj\Debug\net9.0\VirtualBiblio.Business.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documentos\SECRETOSPARACONTAR\backend\VirtualBiblio.Business\obj\Debug\net9.0\VirtualBiblio.Business.AssemblyInfoInputs.cache
+D:\Documentos\SECRETOSPARACONTAR\backend\VirtualBiblio.Business\obj\Debug\net9.0\VirtualBiblio.Business.AssemblyInfo.cs
+D:\Documentos\SECRETOSPARACONTAR\backend\VirtualBiblio.Business\obj\Debug\net9.0\VirtualBiblio.Business.csproj.CoreCompileInputs.cache
+D:\Documentos\SECRETOSPARACONTAR\backend\VirtualBiblio.Business\obj\Debug\net9.0\VirtualBiblio.Business.sourcelink.json
+D:\Documentos\SECRETOSPARACONTAR\backend\VirtualBiblio.Business\obj\Debug\net9.0\VirtualB.B51156D8.Up2Date
+D:\Documentos\SECRETOSPARACONTAR\backend\VirtualBiblio.Business\obj\Debug\net9.0\VirtualBiblio.Business.dll
+D:\Documentos\SECRETOSPARACONTAR\backend\VirtualBiblio.Business\obj\Debug\net9.0\refint\VirtualBiblio.Business.dll
+D:\Documentos\SECRETOSPARACONTAR\backend\VirtualBiblio.Business\obj\Debug\net9.0\VirtualBiblio.Business.pdb
+D:\Documentos\SECRETOSPARACONTAR\backend\VirtualBiblio.Business\obj\Debug\net9.0\ref\VirtualBiblio.Business.dll

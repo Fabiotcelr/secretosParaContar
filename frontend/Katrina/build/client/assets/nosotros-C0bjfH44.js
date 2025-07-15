@@ -1,0 +1,1 @@
+import{j as o}from"./jsx-runtime-0DLF9kdB.js";function t(){return o.jsxs("div",{className:"container mx-auto p-4",children:[o.jsx("h1",{className:"text-3xl font-bold mb-4",children:"Nosotros"}),o.jsx("p",{children:"Bienvenido a la página de Nosotros."})]})}export{t as default};

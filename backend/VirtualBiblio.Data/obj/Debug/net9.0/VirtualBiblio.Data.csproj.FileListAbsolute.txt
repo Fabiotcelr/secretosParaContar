@@ -1,0 +1,15 @@
+D:\Documentos\SecretosParaContar\backend\VirtualBiblio.Data\bin\Debug\net9.0\VirtualBiblio.Data.deps.json
+D:\Documentos\SecretosParaContar\backend\VirtualBiblio.Data\bin\Debug\net9.0\VirtualBiblio.Data.runtimeconfig.json
+D:\Documentos\SECRETOSPARACONTAR\backend\VirtualBiblio.Data\bin\Debug\net9.0\VirtualBiblio.Data.dll
+D:\Documentos\SECRETOSPARACONTAR\backend\VirtualBiblio.Data\bin\Debug\net9.0\VirtualBiblio.Data.pdb
+D:\Documentos\SECRETOSPARACONTAR\backend\VirtualBiblio.Data\obj\Debug\net9.0\VirtualBiblio.Data.csproj.AssemblyReference.cache
+D:\Documentos\SECRETOSPARACONTAR\backend\VirtualBiblio.Data\obj\Debug\net9.0\VirtualBiblio.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documentos\SECRETOSPARACONTAR\backend\VirtualBiblio.Data\obj\Debug\net9.0\VirtualBiblio.Data.AssemblyInfoInputs.cache
+D:\Documentos\SECRETOSPARACONTAR\backend\VirtualBiblio.Data\obj\Debug\net9.0\VirtualBiblio.Data.AssemblyInfo.cs
+D:\Documentos\SECRETOSPARACONTAR\backend\VirtualBiblio.Data\obj\Debug\net9.0\VirtualBiblio.Data.csproj.CoreCompileInputs.cache
+D:\Documentos\SECRETOSPARACONTAR\backend\VirtualBiblio.Data\obj\Debug\net9.0\VirtualBiblio.Data.sourcelink.json
+D:\Documentos\SECRETOSPARACONTAR\backend\VirtualBiblio.Data\obj\Debug\net9.0\VirtualBiblio.Data.dll
+D:\Documentos\SECRETOSPARACONTAR\backend\VirtualBiblio.Data\obj\Debug\net9.0\refint\VirtualBiblio.Data.dll
+D:\Documentos\SECRETOSPARACONTAR\backend\VirtualBiblio.Data\obj\Debug\net9.0\VirtualBiblio.Data.pdb
+D:\Documentos\SecretosParaContar\backend\VirtualBiblio.Data\obj\Debug\net9.0\VirtualBiblio.Data.genruntimeconfig.cache
+D:\Documentos\SecretosParaContar\backend\VirtualBiblio.Data\obj\Debug\net9.0\ref\VirtualBiblio.Data.dll

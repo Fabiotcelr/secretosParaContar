@@ -2783,19 +2783,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DaniHinGo\\.nuget\\packages\\": {}
+    "C:\\Users\\histo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Documentos\\SecretosParaContar\\backend\\VirtualBiblio.Data\\VirtualBiblio.Data.csproj",
+      "projectUniqueName": "C:\\cursos\\secretosparacontar\\backend\\VirtualBiblio.Data\\VirtualBiblio.Data.csproj",
       "projectName": "VirtualBiblio.Data",
-      "projectPath": "D:\\Documentos\\SecretosParaContar\\backend\\VirtualBiblio.Data\\VirtualBiblio.Data.csproj",
-      "packagesPath": "C:\\Users\\DaniHinGo\\.nuget\\packages\\",
-      "outputPath": "D:\\Documentos\\SecretosParaContar\\backend\\VirtualBiblio.Data\\obj\\",
+      "projectPath": "C:\\cursos\\secretosparacontar\\backend\\VirtualBiblio.Data\\VirtualBiblio.Data.csproj",
+      "packagesPath": "C:\\Users\\histo\\.nuget\\packages\\",
+      "outputPath": "C:\\cursos\\secretosparacontar\\backend\\VirtualBiblio.Data\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\DaniHinGo\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\histo\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -2819,7 +2819,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net9.0": {
@@ -2856,16 +2856,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problema al leer el archivo de caché D:\\Documentos\\SecretosParaContar\\backend\\VirtualBiblio.Data\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

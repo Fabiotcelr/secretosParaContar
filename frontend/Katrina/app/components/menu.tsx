@@ -1,13 +1,30 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from "@remix-run/react";
+import { useAuth } from '../contexts/AuthContext';
 
 const Menu = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Simulación de autenticación
   const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const { user, isLoggedIn, isLoading, logout } = useAuth();
+
+  // Debug: Log user info when it changes
+  useEffect(() => {
+    console.log('Menu - User info:', {
+      isLoading,
+      isLoggedIn,
+      user: user ? {
+        id: user.id,
+        nombre: user.nombre,
+        email: user.email,
+        rol: user.rol,
+        avatarUrl: user.avatarUrl
+      } : null,
+      isAdmin: user?.rol === 'admin'
+    });
+  }, [user, isLoggedIn, isLoading]);
 
   // Toggle del menú hamburguesa
   const toggleMenu = () => {
@@ -22,7 +39,7 @@ const Menu = () => {
   // Cerrar el dropdown al hacer clic fuera
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent | TouchEvent) => {
-      const target = event.target as Node | null; // Asegura que event.target es un Node
+      const target = event.target as Node | null;
       if (dropdownRef.current && target && !dropdownRef.current.contains(target)) {
         setIsDropdownOpen(false);
       }
@@ -35,9 +52,19 @@ const Menu = () => {
 
   // Función para cerrar sesión
   const handleLogout = () => {
-    setIsLoggedIn(false); // Simula cerrar sesión
-    setIsDropdownOpen(false); // Cierra el dropdown
-    navigate('/'); // Redirige al inicio
+    try {
+      console.log('Iniciando logout...');
+      logout();
+      console.log('Logout completado');
+      setIsDropdownOpen(false);
+      navigate('/');
+    } catch (error) {
+      console.error('Error durante logout:', error);
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('user');
+      setIsDropdownOpen(false);
+      navigate('/');
+    }
   };
 
   return (
@@ -57,58 +84,112 @@ const Menu = () => {
           <div ref={dropdownRef} className="relative">
             <button
               type="button"
-              className="flex text-sm bg-gray-100 rounded-full md:me-0 focus:ring-4 focus:ring-orange dark:focus:ring-orange"
+              className="flex text-sm bg-white rounded-full md:me-0 focus:ring-4 focus:ring-[#FA4616] hover:ring-2 hover:ring-[#FA4616] transition-all duration-200 shadow-md hover:shadow-lg"
               id="user-menu-button"
               aria-expanded={isDropdownOpen}
               onClick={toggleDropdown}
+              disabled={isLoading}
             >
               <span className="sr-only">Abrir menú de usuario</span>
-              <img src="/images/perfil.png" className="h-10 w-10 rounded-full" alt="Perfil" />
+              {isLoading ? (
+                <div className="h-10 w-10 rounded-full border-2 border-[#FA4616] bg-gray-100 flex items-center justify-center">
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#FA4616]"></div>
+                </div>
+              ) : (
+                <img 
+                  src={user?.avatarUrl || "/images/perfil.png"} 
+                  className="h-10 w-10 rounded-full object-cover border-2 border-[#FA4616]" 
+                  alt="Perfil" 
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = "/images/perfil.png";
+                  }}
+                />
+              )}
             </button>
             {/* Dropdown menu */}
             <div
-              className={`z-50 absolute right-0 mt-2 ${isDropdownOpen ? 'block' : 'hidden'} text-base list-none bg-white divide-y divide-lightGreen rounded-lg shadow-sm`}
+              className={`z-50 absolute right-0 mt-3 ${isDropdownOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'} transform transition-all duration-200 ease-out text-base list-none bg-white rounded-xl shadow-xl border border-gray-100 min-w-[200px]`}
               id="user-dropdown"
             >
-              {isLoggedIn ? (
+              {isLoading ? (
+                <div className="px-4 py-4">
+                  <div className="flex items-center justify-center">
+                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-[#FA4616]"></div>
+                    <span className="ml-2 text-sm text-gray-500">Cargando...</span>
+                  </div>
+                </div>
+              ) : isLoggedIn ? (
                 <>
-                  <div className="px-4 py-3">
-                    <span className="block text-sm text-darkBlue font-BeVietnamPro">Bonnie Green</span>
-                    <span className="block text-sm text-grayMedium truncate">secretosParaContar.com</span>
+                  <div className="px-4 py-4 border-b border-gray-100">
+                    <div className="flex items-center space-x-3">
+                      <img
+                        src={user?.avatarUrl || "/images/perfil.png"} 
+                        className="h-10 w-10 rounded-full object-cover border-2 border-[#FA4616]" 
+                        alt="Avatar"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = "/images/perfil.png";
+                        }}
+                      />
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-semibold text-[#002847] truncate">
+                          {user?.nombre || 'Usuario'}
+                        </p>
+                        <p className="text-xs text-gray-500 truncate">{user?.email || ''}</p>
+                        <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-[#FA4616] text-white mt-1">
+                          {user?.rol || 'Usuario'}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                   <ul className="py-2" aria-labelledby="user-menu-button">
                     <li>
                       <Link
                         to="/perfil"
-                        className="block px-4 py-2 text-sm text-darkBlue hover:bg-lightGreen font-BeVietnamPro"
+                        className="flex items-center px-4 py-3 text-sm text-[#002847] hover:bg-[#F8F8F8] transition-colors duration-150"
                         onClick={toggleDropdown}
                       >
+                        <svg className="w-4 h-4 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
                         Mi Perfil
                       </Link>
                     </li>
                     <li>
                       <Link
-                        to="/historial"
-                        className="block px-4 py-2 text-sm text-darkBlue hover:bg-lightGreen font-BeVietnamPro"
+                        to="/donaciones"
+                        className="flex items-center px-4 py-3 text-sm text-[#002847] hover:bg-[#F8F8F8] transition-colors duration-150"
                         onClick={toggleDropdown}
                       >
-                        Historial
+                        <svg className="w-4 h-4 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                        </svg>
+                        Donaciones
                       </Link>
                     </li>
-                    <li>
-                      <Link
-                        to="/configuracion"
-                        className="block px-4 py-2 text-sm text-darkBlue hover:bg-lightGreen font-BeVietnamPro"
-                        onClick={toggleDropdown}
-                      >
-                        Configuración
-                      </Link>
-                    </li>
-                    <li>
+                    {user?.rol === 'admin' && (
+                      <li>
+                        <Link
+                          to="/panel-administrativo"
+                          className="flex items-center px-4 py-3 text-sm text-[#002847] hover:bg-[#F8F8F8] transition-colors duration-150"
+                          onClick={toggleDropdown}
+                        >
+                          <svg className="w-4 h-4 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                          </svg>
+                          Panel Administrativo
+                        </Link>
+                      </li>
+                    )}
+                    <li className="border-t border-gray-100 mt-2 pt-2">
                       <button
-                        className="block w-full text-left px-4 py-2 text-sm text-orange hover:bg-lightGreen font-BeVietnamPro"
+                        className="flex items-center w-full px-4 py-3 text-sm text-[#FA4616] hover:bg-red-50 transition-colors duration-150"
                         onClick={handleLogout}
                       >
+                        <svg className="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                        </svg>
                         Cerrar Sesión
                       </button>
                     </li>
@@ -119,10 +200,25 @@ const Menu = () => {
                   <li>
                     <Link
                       to="/login"
-                      className="block px-4 py-2 text-sm text-darkBlue hover:bg-lightGreen font-BeVietnamPro"
+                      className="flex items-center px-4 py-3 text-sm text-[#002847] hover:bg-[#F8F8F8] transition-colors duration-150"
                       onClick={toggleDropdown}
                     >
+                      <svg className="w-4 h-4 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                      </svg>
                       Iniciar Sesión
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/registro"
+                      className="flex items-center px-4 py-3 text-sm text-[#002847] hover:bg-[#F8F8F8] transition-colors duration-150"
+                      onClick={toggleDropdown}
+                    >
+                      <svg className="w-4 h-4 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                      </svg>
+                      Registrarse
                     </Link>
                   </li>
                 </ul>
@@ -144,8 +240,6 @@ const Menu = () => {
               <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
             </svg>
           </button>
-
-          
         </div>
 
         {/* Enlaces del menú */}
@@ -168,8 +262,8 @@ const Menu = () => {
             </li>
             <li>
               <Link
-                to="/Biblioteca"
-                className={`block py-2 px-3 rounded-sm md:p-0 font-BeVietnamPro ${location.pathname === '/Biblioteca' ? 'text-orange' : 'text-darkBlue hover:text-orange'}`}
+                to="/biblioteca"
+                className={`block py-2 px-3 rounded-sm md:p-0 font-BeVietnamPro ${location.pathname === '/biblioteca' ? 'text-orange' : 'text-darkBlue hover:text-orange'}`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Biblioteca
@@ -177,8 +271,8 @@ const Menu = () => {
             </li>
             <li>
               <Link
-                to="/Novedades"
-                className={`block py-2 px-3 rounded-sm md:p-0 font-BeVietnamPro ${location.pathname === '/Novedades' ? 'text-orange' : 'text-darkBlue hover:text-orange'}`}
+                to="/novedades"
+                className={`block py-2 px-3 rounded-sm md:p-0 font-BeVietnamPro ${location.pathname === '/novedades' ? 'text-orange' : 'text-darkBlue hover:text-orange'}`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Novedades
@@ -195,13 +289,24 @@ const Menu = () => {
             </li>
             <li>
               <Link
-                to="/panel-administrativo"
-                className={`block py-2 px-3 rounded-sm md:p-0 font-BeVietnamPro ${location.pathname === '/panel-administrativo' ? 'text-orange' : 'text-darkBlue hover:text-orange'}`}
+                to="/donaciones"
+                className={`block py-2 px-3 rounded-sm md:p-0 font-BeVietnamPro ${location.pathname === '/donaciones' ? 'text-orange' : 'text-darkBlue hover:text-orange'}`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                Panel Administrativoo
+                Donaciones
               </Link>
             </li>
+            {isLoggedIn && user?.rol === 'admin' && (
+              <li>
+                <Link
+                  to="/panel-administrativo"
+                  className={`block py-2 px-3 rounded-sm md:p-0 font-BeVietnamPro ${location.pathname === '/panel-administrativo' ? 'text-orange' : 'text-darkBlue hover:text-orange'}`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Panel Administrativo
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>

@@ -704,19 +704,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DaniHinGo\\.nuget\\packages\\": {}
+    "C:\\Users\\histo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Documentos\\SecretosParaContar\\backend\\VirtualBiblio.Business\\VirtualBiblio.Business.csproj",
+      "projectUniqueName": "C:\\cursos\\secretosparacontar\\backend\\VirtualBiblio.Business\\VirtualBiblio.Business.csproj",
       "projectName": "VirtualBiblio.Business",
-      "projectPath": "D:\\Documentos\\SecretosParaContar\\backend\\VirtualBiblio.Business\\VirtualBiblio.Business.csproj",
-      "packagesPath": "C:\\Users\\DaniHinGo\\.nuget\\packages\\",
-      "outputPath": "D:\\Documentos\\SecretosParaContar\\backend\\VirtualBiblio.Business\\obj\\",
+      "projectPath": "C:\\cursos\\secretosparacontar\\backend\\VirtualBiblio.Business\\VirtualBiblio.Business.csproj",
+      "packagesPath": "C:\\Users\\histo\\.nuget\\packages\\",
+      "outputPath": "C:\\cursos\\secretosparacontar\\backend\\VirtualBiblio.Business\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\DaniHinGo\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\histo\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -728,8 +728,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\Documentos\\SecretosParaContar\\backend\\VirtualBiblio.Data\\VirtualBiblio.Data.csproj": {
-              "projectPath": "D:\\Documentos\\SecretosParaContar\\backend\\VirtualBiblio.Data\\VirtualBiblio.Data.csproj"
+            "C:\\cursos\\secretosparacontar\\backend\\VirtualBiblio.Data\\VirtualBiblio.Data.csproj": {
+              "projectPath": "C:\\cursos\\secretosparacontar\\backend\\VirtualBiblio.Data\\VirtualBiblio.Data.csproj"
             }
           }
         }
@@ -744,7 +744,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net9.0": {
@@ -765,16 +765,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problema al leer el archivo de caché D:\\Documentos\\SecretosParaContar\\backend\\VirtualBiblio.Business\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }
